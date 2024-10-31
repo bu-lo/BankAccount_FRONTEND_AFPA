@@ -1,6 +1,6 @@
 #FRONT-END Bank Account Project
 
-<img align="center" src="./preview_logIn.PNG" width="500" height="400" />
+<img align="center" src="./preview_logIn.PNG" width="500" height="300" />
 
 
 # React + Vite
