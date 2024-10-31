@@ -2,6 +2,8 @@ import "../../App.css";
 import styles from './LogIn.module.css';
 
 import { useRef, useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+
 
 function LogIn() {
 
@@ -10,6 +12,8 @@ function LogIn() {
 
     const inputEmail = useRef(null);
     const inputPassword = useRef(null);
+
+    const navigate = useNavigate(); // Hook to manage navigation
 
     const logInButtonClick = () => {
         const API_URL = 'http://localhost:8000/auth/login';
@@ -32,12 +36,14 @@ function LogIn() {
                 if (!response.ok) { // Check if response is OK
                     throw new Error(`Erreur : ${response.status}`);
                 }
+
                 return response.json();
             })
             .then((data) => {
                 console.log("Fetched data:", data);
                 localStorage.setItem('token', data.token);
                 setData(data);      // Store the list of clients in the state
+                navigate('/allaccounts'); // Redirect to the dashboard on successful login
             })
             .catch((error) => {
                 setError(error);     // Store the error in the state
@@ -60,6 +66,7 @@ function LogIn() {
                 <input ref={inputPassword} type="password" id="PassWord" placeholder="Azerty*123"></input>
             </div>
             <button onClick={logInButtonClick}>Connexion</button>
+            {error && <p className={styles.error}>Erreur : {error.message}</p>}
         </div>
 
     )

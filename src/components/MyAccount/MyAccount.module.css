@@ -12,4 +12,5 @@
     padding: 10px;
     margin: 10px;
     width:40%;
+    min-width: 400px;
 }

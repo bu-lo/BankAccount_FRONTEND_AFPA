@@ -18,6 +18,7 @@ function AllAccounts() {
       })
 
     .then((response) => {
+      console.log(localStorage.getItem('token'))
       if (!response.ok) { // Check if response is OK
         throw new Error(`Erreur : ${response.status}`);
       }

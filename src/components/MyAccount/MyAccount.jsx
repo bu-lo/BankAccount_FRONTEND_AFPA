@@ -11,13 +11,17 @@ function MyAccount({ client }) {
         <div className={styles.card_body}>
           <p>{client.firstName} {client.lastName}</p>
           <p>Email : {client.email}</p>
-          <p>BirthDate : {client.birthdate}</p>
+          <p>BirthDate : {client.birthDate}</p>
         </div>
       </div>
-      {/* <div>
-        <p>Balance : {account.balance}</p>
-        <p>Insurance : {}</p>
-      </div> */}
+      <div>
+        <p>Balance : {client.accountBalance.join(" / ")}</p>        {/* ***  CONCATENATION par "" */}
+        {/* <p>Balance :</p>
+        {client.accountBalance.map((balance, index) => (
+          <p key={index}>{balance}</p>
+        ))} */}
+        <p>Insurance : {client.insName}</p>
+      </div>
     </div>
   );
 }
@@ -28,11 +32,10 @@ MyAccount.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     email: PropTypes.string,
-    birthdate: PropTypes.instanceOf(Date)
+    birthDate: PropTypes.instanceOf(Date),
+    accountBalance:PropTypes.number,
+    insName:PropTypes.string 
   }),
-  // account: PropTypes.shape({
-  //   balance: PropTypes.number
-  // })
 }
 
 export default MyAccount;
